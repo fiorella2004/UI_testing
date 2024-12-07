@@ -27,8 +27,8 @@ public class CookiesSteps {
     @Given("The cookie banner is displayed")
     public void theCookieBannerIsDisplayed() {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); 
-	    WebElement cookieDialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CybotCookiebotDialog")));
-	    Assert.assertTrue(cookieDialog.isDisplayed());
+		WebElement cookieDialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CybotCookiebotDialog")));
+		Assert.assertTrue(cookieDialog.isDisplayed());
     }
 
     @When("The user clicks accept all cookies")
@@ -56,7 +56,7 @@ public class CookiesSteps {
     @Then("The cookie widget appears")
     public void theCookieWidgetAppears() {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); 
-	    WebElement cookieWidget = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CookiebotWidget")));
-	    Assert.assertTrue(cookieWidget.isDisplayed());
+		WebElement cookieWidget = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CookiebotWidget")));
+		Assert.assertTrue(cookieWidget.isDisplayed());
     }
 }
