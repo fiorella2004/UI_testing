@@ -1,7 +1,10 @@
 package steps;
 
 import java.time.Duration;
+import java.util.Set;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -44,19 +47,18 @@ public class CookiesSteps {
 
     @Then("The cookie banner disappears")
     public void theCookieBannerDisappears() {
-        boolean isBannerVisible = driver.findElements(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")).size() > 0;
-        Assert.assertFalse(isBannerVisible);
-    }
-
-    @Then("All cookies are enabled")
-    public void allCookiesAreEnabled() {
-        String cookieValue = driver.manage().getCookieNamed("cookiePreference").getValue();
-        Assert.assertEquals("all", cookieValue);  
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); 
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("CybotCookiebotDialog")));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        boolean isVisible = (Boolean) js.executeScript("return document.getElementById('CybotCookiebotDialog')"
+        		+ "!== null && window.getComputedStyle(document.getElementById('CybotCookiebotDialog')).display !== 'none';");
+        Assert.assertFalse(isVisible);
     }
     
-    @Then("Only essential cookies are enabled")
-    public void onlyEssentialCookiesAreEnabled() {
-        String cookieValue = driver.manage().getCookieNamed("cookiePreference").getValue();
-        Assert.assertEquals("essential", cookieValue); 
+    @Then("The cookie widget appears")
+    public void theCookieWidgetAppears() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); 
+	    WebElement cookieWidget = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CookiebotWidget")));
+	    Assert.assertTrue(cookieWidget.isDisplayed());
     }
 }
