@@ -1,9 +1,7 @@
 package steps;
 
 import java.time.Duration;
-import java.util.Set;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,8 +27,8 @@ public class CookiesSteps {
     @Given("The cookie banner is displayed")
     public void theCookieBannerIsDisplayed() {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); 
-	    WebElement cookieBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CybotCookiebotDialog")));
-	    Assert.assertTrue(cookieBanner.isDisplayed());
+	    WebElement cookieDialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CybotCookiebotDialog")));
+	    Assert.assertTrue(cookieDialog.isDisplayed());
     }
 
     @When("The user clicks accept all cookies")
