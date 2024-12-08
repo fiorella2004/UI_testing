@@ -61,4 +61,16 @@ public class AddProductToCartSteps {
         String count = cartWidget.getText().trim();
         Assert.assertEquals("1", count);
     }
+    
+    @When("the user clicks the cart widget")
+    public void theUserClicksTheCartWidget() {
+    	WebElement cartWidget = driver.findElement(By.cssSelector(".minicart-wrapper .action.showcart"));
+        cartWidget.click();
+    }
+    
+    @Then("the cart widget shows the product added")
+    public void theCartWidgetShowsTheProductAdded() {
+        WebElement bookTitle = driver.findElement(By.linkText("KIDNAPPERS"));
+        Assert.assertEquals("KIDNAPPERS", bookTitle.getText().trim());
+    }
 }
