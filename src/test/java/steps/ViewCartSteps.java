@@ -86,8 +86,7 @@ public class ViewCartSteps {
     
     @And("the user can see the book in the cart page")
     public void theUserCanSeeTheBookInTheCartPage() {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement product = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("strong.product-item-name")));
+        WebElement product = driver.findElement(By.cssSelector("strong.product-item-name"));
         String bookTitle = product.getText();
         Assert.assertTrue(bookTitle.contains("KIDNAPPERS"));
     }
