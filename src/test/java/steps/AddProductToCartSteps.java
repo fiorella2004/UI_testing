@@ -63,7 +63,7 @@ public class AddProductToCartSteps {
         Assert.assertEquals("1", count);
     }
     
-    @And("the user clicks the cart widget")
+    @When("the user clicks the cart widget")
     public void theUserClicksTheCartWidget() {
     	WebElement cartWidget = driver.findElement(By.cssSelector(".minicart-wrapper .action.showcart"));
         cartWidget.click();

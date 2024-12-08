@@ -14,5 +14,6 @@ Scenario: The user can see the product added in the widget
 	When the user clicks accept all cookies
 	Then the cart widget shows zero products
 	When the user clicks add to cart the book KIDNAPPERS
-	And the user clicks the cart widget
+	Then the cart widget shows one product
+	When the user clicks the cart widget
 	Then the cart widget shows the product added
