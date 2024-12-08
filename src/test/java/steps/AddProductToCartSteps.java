@@ -8,6 +8,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -23,7 +25,7 @@ public class AddProductToCartSteps {
     	driver.navigate().to("https://www.normacomics.com");
     }
     
-    @Given("the cookie banner is displayed")
+    @And("the cookie banner is displayed")
     public void theCookieBannerIsDisplayed() {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     	WebElement cookieDialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CybotCookiebotDialog")));
@@ -62,7 +64,7 @@ public class AddProductToCartSteps {
         Assert.assertEquals("1", count);
     }
     
-    @When("the user clicks the cart widget")
+    @And("the user clicks the cart widget")
     public void theUserClicksTheCartWidget() {
     	WebElement cartWidget = driver.findElement(By.cssSelector(".minicart-wrapper .action.showcart"));
         cartWidget.click();

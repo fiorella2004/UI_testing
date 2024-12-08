@@ -12,6 +12,7 @@ Scenario: The user can see the product added in the widget
 	Given the user opens the homepage
 	And the cookie banner is displayed
 	When the user clicks accept all cookies
+	Then the cart widget shows zero products
 	When the user clicks add to cart the book KIDNAPPERS
-	When the user clicks the cart widget
+	And the user clicks the cart widget
 	Then the cart widget shows the product added
