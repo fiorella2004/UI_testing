@@ -14,9 +14,9 @@ import io.cucumber.java.en.When;
 
 public class AddProductToCartSteps {
 	
-	private WebDriver driver; 
-
-    @Given("The user opens the homepage")
+	private WebDriver driver;
+	
+	@Given("The user opens the homepage")
     public void theUserOpensTheHomepage() {
     	System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
     	driver = new FirefoxDriver();
