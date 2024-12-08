@@ -1,6 +1,6 @@
 Feature: Add product to cart
 
-Scenario: Add product to cart
+Scenario: Add one product to cart
 	Given The user opens the homepage
 	And The cookie banner is displayed
 	When The user clicks accept all cookies

@@ -13,7 +13,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class AddProductToCartSteps {
-
+	
 	private WebDriver driver; 
 
     @Given("The user opens the homepage")
@@ -51,5 +51,14 @@ public class AddProductToCartSteps {
         Assert.assertNotNull(bookExists);
         WebElement addToCartButton = bookKIDNAPPERS.findElement(By.cssSelector("button.action.tocart.primary"));
         addToCartButton.click();
+    }
+    
+    @Then("The cart widget shows one product")
+    public void theCartWidgetShowsOneProduct() {
+        WebElement cartWidget = driver.findElement(By.cssSelector(".counter-number"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.textToBePresentInElement(cartWidget, "1"));
+        String count = cartWidget.getText().trim();
+        Assert.assertEquals("1", count);
     }
 }
