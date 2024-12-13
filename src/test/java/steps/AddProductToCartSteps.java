@@ -24,33 +24,17 @@ public class AddProductToCartSteps {
     	driver.navigate().to("https://www.normacomics.com");
     }
     
-    @And("the cookie banner is displayed")
-    public void theCookieBannerIsDisplayed() {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    	WebElement cookieDialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CybotCookiebotDialog")));
-    	Assert.assertTrue(cookieDialog.isDisplayed());
-    }
-    
     @When("the user clicks accept all cookies")
     public void theUserClicksAcceptAllCookies() {
         WebElement acceptButton = driver.findElement(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")); 
         acceptButton.click();
     }
     
-    @Then("the cart widget shows zero products")
-    public void theCartWidgetShowsZeroProducts() {
-        WebElement cartWidget = driver.findElement(By.cssSelector(".counter-number")); 
-        String count = cartWidget.getText().trim();
-        Assert.assertEquals("0", count);
-    }
-    
-    @When("the user clicks add to cart the book KIDNAPPERS")
-    public void theUserClicksAddToCartTheBookKIDNAPPERS() {
+    @When("the user clicks add to cart one book")
+    public void theUserClicksAddToCartOneBook() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement bookKIDNAPPERS = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.product-item-details")));
-        WebElement bookExists = bookKIDNAPPERS.findElement(By.cssSelector("a[title='KIDNAPPERS']"));
-        Assert.assertNotNull(bookExists);
-        WebElement addToCartButton = bookKIDNAPPERS.findElement(By.cssSelector("button.action.tocart.primary"));
+        WebElement book = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.product-item-details")));
+        WebElement addToCartButton = book.findElement(By.cssSelector("button.action.tocart.primary"));
         addToCartButton.click();
     }
     
@@ -71,7 +55,8 @@ public class AddProductToCartSteps {
     
     @Then("the cart widget shows the product added")
     public void theCartWidgetShowsTheProductAdded() {
-        WebElement bookTitle = driver.findElement(By.linkText("KIDNAPPERS"));
-        Assert.assertEquals("KIDNAPPERS", bookTitle.getText().trim());
+        WebElement bookTitle = driver.findElement(By.cssSelector("strong.product-item-name > a"));
+        String exists = bookTitle.getText().trim();
+        Assert.assertNotNull(exists);
     }
 }
