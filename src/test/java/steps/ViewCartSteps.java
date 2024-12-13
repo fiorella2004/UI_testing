@@ -90,4 +90,19 @@ public class ViewCartSteps {
         String bookTitle = product.getText();
         Assert.assertTrue(bookTitle.contains("KIDNAPPERS"));
     }
+    
+    @When("the user increases the product by one")
+    public void theUserIncreasesTheProductByOne() {
+        WebElement increaseButton = driver.findElement(By.cssSelector(".increaseqty-sticky qty-btn"));
+        increaseButton.click();
+    }
+    
+    @Then("the cart shows two items of that product")
+    public void theCartShowsTwoItemsOfThatProduct() {
+    	WebElement quantity = driver.findElement(By.id("cart-2168574-qty"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(quantity));
+        String count = quantity.getAttribute("value");
+        Assert.assertEquals("2", count);
+    }
 }
