@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import io.cucumber.java.After;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -36,7 +37,7 @@ public class ProductSearchSteps {
         acceptButton.click();
     }
     
-    @When("the user enters arcane in the search bar")
+    @And("the user enters arcane in the search bar")
     public void theUserEntersArcaneInTheSearchBar() {
     	 WebElement searchForm = driver.findElement(By.id("search_mini_form"));
     	 WebElement searchInput = searchForm.findElement(By.id("search"));
@@ -61,7 +62,7 @@ public class ProductSearchSteps {
         }
     }
     
-    @When("the user enters mmmmm in the search bar")
+    @And("the user enters mmmmm in the search bar")
     public void theUserEntersmmmmmInTheSearchBar() {
     	 WebElement searchForm = driver.findElement(By.id("search_mini_form"));
     	 WebElement searchInput = searchForm.findElement(By.id("search"));
