@@ -18,15 +18,19 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import utils.WebDriverManager;
 
-public class ProductSearchSteps extends BasicSteps {
+public class ProductSearchSteps {
+	
+
+	protected WebDriver driver = WebDriverManager.getDriver();
     
     @And("the user enters arcane in the search bar")
     public void theUserEntersArcaneInTheSearchBar() {
-    	 WebElement searchForm = driver.findElement(By.id("search_mini_form"));
-    	 WebElement searchInput = searchForm.findElement(By.id("search"));
-    	 searchInput.sendKeys("arcane");
-    	 searchInput.sendKeys(Keys.RETURN);
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));  
+    	WebElement searchInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='control']//input[@class='input-text']")));
+    	searchInput.sendKeys("arcane");
+    	searchInput.sendKeys(Keys.RETURN);
     }
     
     @Then("the results show products related to arcane")
@@ -48,10 +52,10 @@ public class ProductSearchSteps extends BasicSteps {
     
     @And("the user enters mmmmm in the search bar")
     public void theUserEntersmmmmmInTheSearchBar() {
-    	 WebElement searchForm = driver.findElement(By.id("search_mini_form"));
-    	 WebElement searchInput = searchForm.findElement(By.id("search"));
-    	 searchInput.sendKeys("mmmmm");
-    	 searchInput.sendKeys(Keys.RETURN);
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));  
+    	WebElement searchInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='control']//input[@class='input-text']")));
+    	searchInput.sendKeys("mmmmm");
+    	searchInput.sendKeys(Keys.RETURN);
     }
     
     @Then("a message indicates Prueba de nuevo con otra busqueda")

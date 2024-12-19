@@ -12,8 +12,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import utils.WebDriverManager;
 
-public class ViewCartSteps extends BasicSteps{
+public class ViewCartSteps{
+	
+
+	protected WebDriver driver = WebDriverManager.getDriver();
     
     @And("the user clicks add to cart one book")
     public void theUserClicksAddToCartOneBook() {

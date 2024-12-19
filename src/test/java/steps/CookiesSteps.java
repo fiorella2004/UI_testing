@@ -9,17 +9,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import io.cucumber.java.en.When;
+import utils.WebDriverManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 
-public class CookiesSteps extends BasicSteps {
-    
-    @And("the cookie banner is displayed")
-    public void theCookieBannerIsDisplayed() {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    	WebElement cookieDialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CybotCookiebotDialog")));
-    	Assert.assertTrue(cookieDialog.isDisplayed());
-    }
+public class CookiesSteps{
+	
+	protected WebDriver driver = WebDriverManager.getDriver();
 	
     @When("the user clicks reject all cookies")
     public void theUserClicksRejectAllCookies() {

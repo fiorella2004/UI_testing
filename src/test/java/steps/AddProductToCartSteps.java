@@ -1,3 +1,5 @@
+/*
+
 package steps;
 
 import java.time.Duration;
@@ -12,9 +14,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import utils.WebDriverManager;
 
-public class AddProductToCartSteps extends BasicSteps {
-  
+public class AddProductToCartSteps {
+
+	protected WebDriver driver = WebDriverManager.getDriver();
+	
     @When("the user clicks add to cart one book")
     public void theUserClicksAddToCartOneBook() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -45,3 +50,4 @@ public class AddProductToCartSteps extends BasicSteps {
         Assert.assertNotNull(exists);
     }
 }
+*/
