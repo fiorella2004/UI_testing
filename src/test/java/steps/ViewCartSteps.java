@@ -13,22 +13,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class ViewCartSteps {
-	
-    private WebDriver driver;
-
-    @Given("the user opens the homepage")
-    public void theUserOpensTheHomepage() {
-    	System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
-    	driver = new FirefoxDriver();
-    	driver.navigate().to("https://www.normacomics.com");
-    }
-    
-    @When("the user clicks accept all cookies")
-    public void theUserClicksAcceptAllCookies() {
-        WebElement acceptButton = driver.findElement(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")); 
-        acceptButton.click();
-    }
+public class ViewCartSteps extends BasicSteps{
     
     @And("the user clicks add to cart one book")
     public void theUserClicksAddToCartOneBook() {

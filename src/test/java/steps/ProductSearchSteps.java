@@ -19,23 +19,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class ProductSearchSteps {
-	WebDriver driver;
-	
-
-    @Given("the user is in the index page")
-    public void theUserIsInTheIndexPage() {
-        System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
-        driver = new FirefoxDriver();
-        driver.navigate().to("https://www.normacomics.com/");
-    }
-    
-    @When("The user clicks accept all cookies")
-    public void theUserClicksAcceptAllCookies() {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));  
-        WebElement acceptButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")));
-        acceptButton.click();
-    }
+public class ProductSearchSteps extends BasicSteps {
     
     @And("the user enters arcane in the search bar")
     public void theUserEntersArcaneInTheSearchBar() {
