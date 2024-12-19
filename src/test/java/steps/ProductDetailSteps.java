@@ -1,0 +1,34 @@
+package steps;
+
+import static org.testng.Assert.assertEquals;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import utils.WebDriverManager;
+
+public class ProductDetailSteps {
+	
+	protected WebDriver driver = WebDriverManager.getDriver();
+	
+	@And("the user clicks one product")
+	public void theUserClicksOneProduct() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));  
+		WebElement product = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".product-image-photo")));
+		product.click();
+	}
+	
+	@Then("the product details are shown")
+	public void theProductDetailsAreShown() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));  
+		WebElement caracteristicas = driver.findElement(By.linkText("Características"));
+	}
+}
+    
