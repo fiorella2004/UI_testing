@@ -24,10 +24,10 @@ public class BasicSteps {
         driver = WebDriverManager.getDriver();  
     }
     
-    @After
-    public void closeDriver() {
-        WebDriverManager.quitDriver();  
-    }
+    //@After
+    //public void closeDriver() {
+    //    WebDriverManager.quitDriver();  
+    //}
 
     @Given("the user opens the index page")
     public void theUserOpensTheIndexPage() {
@@ -69,4 +69,17 @@ public class BasicSteps {
     	WebElement cartWidget = driver.findElement(By.cssSelector(".minicart-wrapper .action.showcart"));
         cartWidget.click();
     }
+    
+	@And("the user clicks the user button")
+	public void theUserClicksTheUserButton() {
+        WebElement userButton = driver.findElement(By.id("account-dropdown-sinapsis"));
+        userButton.click();
+	}
+	
+	@Then("the user button is displayed")
+	public void theUserButtonIsDisplayed() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    	WebElement userButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login-form")));
+    	Assert.assertTrue(userButton.isDisplayed());
+	}
 }

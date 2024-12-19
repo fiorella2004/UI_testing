@@ -17,23 +17,10 @@ import utils.WebDriverManager;
 public class LoginSteps {
 	
 	protected WebDriver driver = WebDriverManager.getDriver();
-	
-	@And("the user clicks the user button")
-	public void theUserClicksTheUserButton() {
-        WebElement userButton = driver.findElement(By.id("account-dropdown-sinapsis"));
-        userButton.click();
-	}
-	
-	@Then("the user button is displayed")
-	public void theUserButtonIsDisplayed() {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    	WebElement userButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login-form")));
-    	Assert.assertTrue(userButton.isDisplayed());
-	}
-	
+
 	@When("the user writes their email")
 	public void theUserWritesTheirEmail() {
-		WebElement email= driver.findElement(By.id("email")); 
+		WebElement email = driver.findElement(By.id("email")); 
 		email.clear();
 		email.sendKeys("1666868@uab.cat");
 	}
