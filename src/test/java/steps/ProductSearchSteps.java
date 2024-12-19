@@ -2,27 +2,19 @@ package steps;
 
 import java.time.Duration;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
-import io.cucumber.java.After;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import utils.WebDriverManager;
 
 public class ProductSearchSteps {
 	
-
 	protected WebDriver driver = WebDriverManager.getDriver();
     
     @And("the user enters arcane in the search bar")
@@ -65,17 +57,5 @@ public class ProductSearchSteps {
         String messageText = messageElement.getText();
         Assert.assertTrue(messageText.contains("La búsqueda no ha devuelto ningún resultado"));
     }
-    
-    
-    @After
-    public void closeBrowser() {
-        if (driver != null) {
-            try {
-                Thread.sleep(1000);  
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            driver.quit();
-        }
-    }
+   
 }
