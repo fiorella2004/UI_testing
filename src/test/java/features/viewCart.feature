@@ -23,7 +23,7 @@ Scenario: The user can increase the number of the products
 	When the user increases the number of the products
 	Then the cart shows two products
 	
-Scenario: The user can increase the number of the products
+Scenario: The user can decrease the number of the products
 	Given the user opens the index page
 	And the cookie banner is displayed
 	When the user clicks accept all cookies
