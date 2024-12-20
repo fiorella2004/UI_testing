@@ -1,6 +1,6 @@
-Feature: Login
+Feature: Register
 
-Scenario: Register with the an user information
+Scenario: Complete the registration form without CAPTCHA verification
     Given the user opens the index page
     And the cookie banner is displayed
     When the user clicks accept all cookies

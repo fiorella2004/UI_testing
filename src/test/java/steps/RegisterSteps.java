@@ -63,5 +63,4 @@ public class RegisterSteps {
 		js.executeScript("arguments[0].scrollIntoView(true);", registerButton); 
 		js.executeScript("arguments[0].click();", registerButton);
 	}
-
 }

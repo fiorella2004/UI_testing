@@ -24,10 +24,10 @@ public class BasicSteps {
         driver = WebDriverManager.getDriver();  
     }
     
-    //@After
-    //public void closeDriver() {
-    //    WebDriverManager.quitDriver();  
-    //}
+    @After
+    public void closeDriver() {
+        WebDriverManager.quitDriver();  
+    }
 
     @Given("the user opens the index page")
     public void theUserOpensTheIndexPage() {
