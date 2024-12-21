@@ -1,22 +1,22 @@
 Feature: Product search using filter
 
-Scenario: Filter comics   
+Scenario: the user uses the menu filters  
     Given the user opens the index page
     And the cookie banner is displayed
     When the user clicks accept all cookies  
     And the user clicks on the Menu button  
-    And the user selects Comics   
-    Then the user should see a message Norma Comics La Mayor Tienda De Comics De Europa
+    And the user selects <filter> filter
+    Then the user should see a message <title>
     
-Scenario: Filter books  
-    Given the user opens the index page
-    And the cookie banner is displayed
-    When the user clicks accept all cookies  
-    And the user clicks on the Menu button  
-    And the user selects Libros   
-    Then the user should see a message Libros
+    Examples:
+			| filter				|	title																							|
+			|	COMICS				|	Norma Cómics: La Mayor Tienda De Cómics De Europa	|
+			|	LIBROS				|	Libros																						|			
+			|	MERCHANDISING	|	Merchandising																			|
+			| PRÓXIMAMENTE	|	Próximamente En Norma Comics											|
+			| NOVEDADES			|	Novedades En Cómics Y Libros											|
     
-Scenario: Filter merchandising 
+Scenario: the user uses filter merchandising 
     Given the user opens the index page
     And the cookie banner is displayed
     When the user clicks accept all cookies  

@@ -24,35 +24,24 @@ public class FilteredSearchSteps {
         menuButton.click();
     }
     
-    @And("the user selects Comics")
-    public void theUserSelectsComics() {
+    @And("^the user selects (.*) filter$")
+    public void theUserSelectsComicsFilter(String filter) {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));  
-        WebElement comicsButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='COMICS']")));
+        WebElement comicsButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(String.format("//span[text()='%s']", filter))));
         comicsButton.click();
     }
     
-    @Then("the user should see a message Norma Comics La Mayor Tienda De Comics De Europa")
-    public void theUserShouldSeeAMessageNormaComicsLaMayorTiendaDeComicsDeEuropa() {
+    @Then("^the user should see a message (.*)")
+    public void theUserShouldSeeAMessageNormaComicsLaMayorTiendaDeComicsDeEuropa(String title) {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));  
     	WebElement messageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.base[data-ui-id='page-title-wrapper']")));
+    	try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
         String messageText = messageElement.getText();
-        Assert.assertTrue(messageText.contains("Norma Cómics: La Mayor Tienda De Cómics De Europa"));
-    }
-    
-    @And("the user selects Libros")
-    public void theUserSelectsLibros() {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));  
-        WebElement librosButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='LIBROS']")));
-        librosButton.click();
-    }
-    
-    
-    @Then("the user should see a message Libros")
-    public void theUserShouldSeeAMessageLibros() {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));  
-    	WebElement messageLibros = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.base[data-ui-id='page-title-wrapper']")));
-        String messageText = messageLibros.getText();
-        Assert.assertTrue(messageText.contains("Libros"));
+        Assert.assertTrue(messageText.contains(title));
     }
     
     @And("the user clicks on the merchandising button")
