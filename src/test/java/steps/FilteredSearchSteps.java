@@ -20,8 +20,8 @@ public class FilteredSearchSteps {
     @And("the user clicks on the Menu button")
     public void theUserClicksOnTheMenuButton() {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));  
-        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Menú']")));
-        menuButton.click();
+    	WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".nav-toggle")));
+    	menuButton.click();
     }
     
     @And("^the user selects (.*) filter$")
@@ -33,7 +33,7 @@ public class FilteredSearchSteps {
     
     @Then("^the user should see a message (.*)")
     public void theUserShouldSeeAMessageNormaComicsLaMayorTiendaDeComicsDeEuropa(String title) {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));  
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));  
     	WebElement messageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.base[data-ui-id='page-title-wrapper']")));
     	try {
 			Thread.sleep(2000);
