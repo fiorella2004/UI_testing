@@ -1,6 +1,6 @@
 Feature: Product search using filter
 
-Scenario: the user uses the menu filters  
+Scenario Outline: the user uses the menu filters  
     Given the user opens the index page
     And the cookie banner is displayed
     When the user clicks accept all cookies  

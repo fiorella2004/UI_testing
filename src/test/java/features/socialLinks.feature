@@ -1,6 +1,6 @@
 Feature: Verify social link
 
-Scenario: the user clicks on the social links
+Scenario Outline: the user clicks on the social links
     Given the user opens the index page
     And the cookie banner is displayed
     When the user clicks accept all cookies 

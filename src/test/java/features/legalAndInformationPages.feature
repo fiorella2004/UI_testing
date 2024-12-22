@@ -1,6 +1,6 @@
 Feature: Legal and information pages
 
-Scenario: The user views a legal and information page  
+Scenario Outline: The user views a legal and information page  
     Given the user opens the index page
     And the cookie banner is displayed
     When the user clicks accept all cookies  
