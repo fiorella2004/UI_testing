@@ -16,10 +16,10 @@ import utils.WebDriverManager;
 public class ProductSearchSteps {
 	
 	protected WebDriver driver = WebDriverManager.getDriver();
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));  
     
     @And("the user enters arcane in the search bar")
     public void theUserEntersArcaneInTheSearchBar() {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));  
     	WebElement searchInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='control']//input[@class='input-text']")));
     	searchInput.sendKeys("arcane");
     	searchInput.sendKeys(Keys.RETURN);
@@ -27,7 +27,6 @@ public class ProductSearchSteps {
     
     @Then("the results show products related to arcane")
     public void theResultsShowRelatedToArcane() {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));  
         WebElement resultsContainer = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("products-grid"))); 
         
         List<WebElement> productItems = resultsContainer.findElements(By.cssSelector(".product-item"));  
@@ -44,7 +43,6 @@ public class ProductSearchSteps {
     
     @And("the user enters mmmmm in the search bar")
     public void theUserEntersmmmmmInTheSearchBar() {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));  
     	WebElement searchInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='control']//input[@class='input-text']")));
     	searchInput.sendKeys("mmmmm");
     	searchInput.sendKeys(Keys.RETURN);
@@ -52,7 +50,6 @@ public class ProductSearchSteps {
     
     @Then("a message indicates Prueba de nuevo con otra busqueda")
     public void aMessageIndicatesPruebaDeNuevoConOtraBusqueda() {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));  
     	WebElement messageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'message notice')]//div[contains(text(),'La búsqueda no ha devuelto ningún resultado')]")));
         String messageText = messageElement.getText();
         Assert.assertTrue(messageText.contains("La búsqueda no ha devuelto ningún resultado"));

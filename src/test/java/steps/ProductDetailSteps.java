@@ -17,17 +17,16 @@ import utils.WebDriverManager;
 public class ProductDetailSteps {
 	
 	protected WebDriver driver = WebDriverManager.getDriver();
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));  
 	
 	@And("the user clicks one product")
 	public void theUserClicksOneProduct() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));  
 		WebElement product = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".product-image-photo")));
 		product.click();
 	}
 	
 	@Then("the product details are shown")
 	public void theProductDetailsAreShown() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));  
 		WebElement caracteristicas = driver.findElement(By.linkText("Características"));
 	}
 }

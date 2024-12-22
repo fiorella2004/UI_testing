@@ -2,6 +2,6 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features="src/test/java/features/legalAndInformationPages.feature", glue="steps")
-public class RunLegalAndInformationPages extends AbstractTestNGCucumberTests{
+public class RunLegalAndInformationPagesTest extends AbstractTestNGCucumberTests{
 
 }
