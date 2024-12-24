@@ -1,12 +1,8 @@
 package steps;
 
 import static org.testng.Assert.assertTrue;
-import static org.testng.Assert.assertEquals;
-
 import java.time.Duration;
-import java.util.Set;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -38,7 +34,7 @@ public class MapLinkSteps {
     @And("the user clicks googleMaps")
     public void theUserClicksGoogleMaps() {
         WebElement googleMapsLink = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@href='https://goo.gl/maps/i9VBSGfiSjYYckZt8']")));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", googleMapsLink);
+        googleMapsLink.click();
     }
 
     @Then("google maps page opens")
@@ -50,7 +46,6 @@ public class MapLinkSteps {
                 break;
             }
         }
-        wait.until(ExpectedConditions.urlContains("google.com/maps"));
-        assertTrue(driver.getCurrentUrl().contains("google.com/maps"));
+        assertTrue(wait.until(ExpectedConditions.urlContains("google.com/maps")));
     }
 }

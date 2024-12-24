@@ -20,16 +20,16 @@ public class ProductSearchSteps {
     
     @And("the user enters arcane in the search bar")
     public void theUserEntersArcaneInTheSearchBar() {
-    	WebElement searchInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='control']//input[@class='input-text']")));
+    	WebElement searchInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("search")));
     	searchInput.sendKeys("arcane");
     	searchInput.sendKeys(Keys.RETURN);
     }
     
     @Then("the results show products related to arcane")
     public void theResultsShowRelatedToArcane() {
-        WebElement resultsContainer = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("products-grid"))); 
+        WebElement products = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("products-grid"))); 
         
-        List<WebElement> productItems = resultsContainer.findElements(By.cssSelector(".product-item"));  
+        List<WebElement> productItems = products.findElements(By.cssSelector(".product-item"));  
         
         boolean containsArcane = false;
         for (WebElement product : productItems) {
@@ -39,18 +39,19 @@ public class ProductSearchSteps {
                 break;
             }
         }
+        Assert.assertTrue(containsArcane);
     }
     
     @And("the user enters mmmmm in the search bar")
     public void theUserEntersmmmmmInTheSearchBar() {
-    	WebElement searchInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='control']//input[@class='input-text']")));
+    	WebElement searchInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("search")));
     	searchInput.sendKeys("mmmmm");
     	searchInput.sendKeys(Keys.RETURN);
     }
     
     @Then("a message indicates Prueba de nuevo con otra busqueda")
     public void aMessageIndicatesPruebaDeNuevoConOtraBusqueda() {
-    	WebElement messageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'message notice')]//div[contains(text(),'La búsqueda no ha devuelto ningún resultado')]")));
+    	WebElement messageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'La búsqueda no ha devuelto ningún resultado')]")));
         String messageText = messageElement.getText();
         Assert.assertTrue(messageText.contains("La búsqueda no ha devuelto ningún resultado"));
     }

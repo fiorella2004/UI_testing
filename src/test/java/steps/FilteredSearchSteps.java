@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import utils.WebDriverManager;
@@ -32,7 +31,7 @@ public class FilteredSearchSteps {
     
     @Then("^the user should see a message (.*)")
     public void theUserShouldSeeAMessageNormaComicsLaMayorTiendaDeComicsDeEuropa(String title) {
-    	WebElement messageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.base[data-ui-id='page-title-wrapper']")));
+    	WebElement messageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.base")));
     	try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
@@ -50,7 +49,7 @@ public class FilteredSearchSteps {
     
     @Then("the user should see a product of portamanga sushi")
     public void theUserShoulSeeAProductOfPortaMangaSushi() { 
-    	WebElement resultsContainer = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img.product-image-photo[alt='PORTAMANGA SUSHI']")));
-        assertNotNull(resultsContainer);
+    	WebElement productMerchandising = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img.product-image-photo[alt='PORTAMANGA SUSHI']")));
+        assertNotNull(productMerchandising);
     }
 }

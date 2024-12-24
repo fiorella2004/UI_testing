@@ -31,8 +31,6 @@ public class SocialLinksSteps {
                 break;
             }
         }
-        
-        wait.until(ExpectedConditions.urlContains(url));
-        assertTrue(driver.getCurrentUrl().contains(url));
+        assertTrue(wait.until(ExpectedConditions.urlContains(url)));
     }
 }

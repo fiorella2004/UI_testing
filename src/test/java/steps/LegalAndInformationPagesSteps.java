@@ -14,7 +14,6 @@ import utils.WebDriverManager;
 public class LegalAndInformationPagesSteps {
 	
 	protected WebDriver driver = WebDriverManager.getDriver();
-
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); 
 	
 	@And("^the user clicks on (.*) page")
